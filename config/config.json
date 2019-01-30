@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "hajna",
+    "password": "password",
+    "database": "parking",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "hajna",
+    "password": "password",
+    "database": "parking",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "hajna",
+    "password": "password",
+    "database": "parking",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
