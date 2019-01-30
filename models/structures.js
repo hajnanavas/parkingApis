@@ -12,14 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     total_space: DataTypes.INTEGER,
     occupied_space: DataTypes.INTEGER,
     color: DataTypes.STRING,
-    status: {
-      type: DataTypes.ENUM('active', 'inactive'),
-    },
+    status: DataTypes.ENUM(['active', 'inactive']),
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT,
-    hidden: {
-      type: DataTypes.ENUM('false', 'true'),
-    },
+    hidden: DataTypes.ENUM(['false', 'true']),
     low: DataTypes.INTEGER,
     medium: DataTypes.INTEGER,
     full: DataTypes.INTEGER
