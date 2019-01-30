@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('rkdemo:server');
+var debug = require('debug')('express-sequelize');
 var http = require('http');
 
 /**
@@ -25,7 +25,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 server.listen(port, () => {
-  console.log('app listen to port', port);
+  debug('Express server listening on port ' + server.address().port);
 });
 
 server.on('error', onError);
