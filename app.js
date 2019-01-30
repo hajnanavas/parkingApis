@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 
 var routes = require('./routes/index');
-var structure = require('./routes/structure');
+var structure = require('./routes/structures');
 
 var app = express();
+
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
 
 app.use(cors());
 app.use(logger('dev'));
@@ -19,8 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 
-/*app.use('/resources',express.static(__dirname + '/images'));
-So now, you can use http://localhost:5000/resources/myImage.jpg to serve all the images instead of http://localhost:5000/images/myImage.jpg. */
+/*So now, you can use http://localhost:5000/resources/myImage.jpg to serve all the images instead of http://localhost:5000/images/myImage.jpg. */
 app.use('/', routes);
 app.use('/structures', structure);
 
@@ -38,10 +40,10 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    // res.render('error', {
+    //   message: err.message,
+    //   error: err
+    // });
   });
 }
 
@@ -49,10 +51,10 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+  // res.render('error', {
+  //   message: err.message,
+  //   error: {}
+  // });
 });
 
 

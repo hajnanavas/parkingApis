@@ -24,7 +24,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM('active', 'inactive'),
+        allowNull: false,
+        defaultValue: 'active'
       },
       latitude: {
         type: Sequelize.FLOAT
@@ -33,7 +35,9 @@ module.exports = {
         type: Sequelize.FLOAT
       },
       hidden: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM('false', 'true'),
+        allowNull: false,
+        defaultValue: 'false'
       },
       low: {
         type: Sequelize.INTEGER
@@ -53,7 +57,9 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    console.log(Model.rawAttributes.states.values);
   },
+  
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('structures');
   }

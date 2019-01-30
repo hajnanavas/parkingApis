@@ -13,11 +13,4 @@ router.post("/structures", (req, res) =>
     }).then((result) => res.json(result))
 );
 
-// router.post('/create', function (req, res) {
-//     models.User.create({
-//         username: req.body.username
-//     }).then(function () {
-//         res.redirect('/');
-//     });
-// });
 module.exports = router;
