@@ -8,8 +8,18 @@ router.get("/getStructures", (req, res) =>
 
 router.post("/addStructure", (req, res) =>
     model.structures.create({
-        title: req.body.title,
-        content: req.body.content
+        structure_name: req.body.structureName,
+        structure_type: req.body.structureType,
+        total_space: req.body.totalSpace,
+        occupied_space: req.body.occupiedSpace,
+        color: req.body.color,
+        status: req.body.status,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        hidden: req.body.hidden,
+        low: req.body.low,
+        medium: req.body.medium,
+        full: req.body.full,
     }).then((result) => res.json(result))
 );
 
