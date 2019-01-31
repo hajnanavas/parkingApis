@@ -20,7 +20,9 @@ router.post("/addStructure", (req, res) =>
         low: req.body.low,
         medium: req.body.medium,
         full: req.body.full,
-    }).then((result) => res.json(result))
+    }).then((result) => {
+        res.json(result)
+    })
 );
 
 module.exports = router;

@@ -1,11 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const structures = sequelize.define('structures', {
+  const sub_structures = sequelize.define('sub_structures', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
+    },
+    structure_id: {
+      type: DataTypes.INTEGER,
+      onDelete: "CASCADE",
+      allowNull: false,
+      references: {
+        model: 'structures',
+        key: 'id'
+      }
     },
     structure_name: DataTypes.STRING,
     structure_type: DataTypes.STRING,
@@ -21,11 +30,16 @@ module.exports = (sequelize, DataTypes) => {
     full: DataTypes.INTEGER
   }, {});
 
-  structures.associate = function (models) {
+  sub_structures.associate = function(models) {
     // associations can be defined here
-    models.structures.hasMany(models.sub_structures);
-    models.structures.hasOne(models.structure_details);
+    models.sub_structures.belongsTo(models.structures, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false,
+        key: 'structure_id'
+      }
+    });
   };
   
-  return structures;
+  return sub_structures;
 };
