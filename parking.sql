@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 30, 2019 at 06:13 PM
+-- Generation Time: Feb 01, 2019 at 04:43 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -49,13 +49,68 @@ CREATE TABLE `structures` (
 --
 
 INSERT INTO `structures` (`id`, `structure_name`, `structure_type`, `total_space`, `occupied_space`, `color`, `status`, `latitude`, `longitude`, `hidden`, `low`, `medium`, `full`, `createdAt`, `updatedAt`) VALUES
-(5, 'Parking Lot 1', 'Lot', 25, 21, 'green', 'active', -33.9517, 151.073, 'true', 9, 18, 20, '2019-01-30 12:18:21.000000', '2019-01-30 12:18:21.000000'),
-(6, 'roselands drive', 'Space', 50, 50, 'red', 'active', -33.9365, 151.071, 'false', 9, 20, 40, '2019-01-30 12:20:00.000000', '2019-01-30 12:20:00.000000'),
-(7, 'Liverpool street', 'Lot', 45, 21, 'blue', 'active', -33.881, 151.224, 'false', 9, 10, 20, '2019-01-30 12:20:46.000000', '2019-01-30 12:20:46.000000'),
-(8, 'burragorang road', 'Space', 32, 20, 'green', 'active', -34.0753, 150.539, 'true', 6, 18, 28, '2019-01-30 12:21:53.000000', '2019-01-30 12:21:53.000000'),
-(9, 'royal np', 'Lot', 45, 4, 'blue', 'active', -34.0827, 151.126, 'true', 3, 10, 15, '2019-01-30 12:23:48.000000', '2019-01-30 12:23:48.000000'),
-(10, 'stanwell', 'Lot', 50, 50, 'green', 'active', -34.2295, 150.987, 'false', 1, 3, 50, '2019-01-30 12:25:01.000000', '2019-01-30 12:25:01.000000'),
-(11, 'macquarie park', 'Space', 21, 12, 'red', 'active', -33.9257, 150.922, 'false', 3, 12, 15, '2019-01-30 12:25:42.000000', '2019-01-30 12:25:42.000000');
+(1, 'Moss Vale', 'Lot', 21, 12, 'green', 'active', -34.5573, 150.387, 'true', 3, 5, 10, '2019-02-01 09:32:59.000000', '2019-02-01 09:32:59.000000'),
+(2, 'kangaroo valley ', 'Lot', 45, 4, 'blue', 'active', -34.7517, 150.549, 'false', 4, 14, 36, '2019-02-01 09:54:37.000000', '2019-02-01 09:54:37.000000'),
+(3, 'meryla street', 'Lot', 23, 16, 'green', 'active', -33.8728, 151.105, 'false', 10, 16, 20, '2019-02-01 09:58:18.000000', '2019-02-01 09:58:18.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `structure_details`
+--
+
+CREATE TABLE `structure_details` (
+  `id` int(10) NOT NULL,
+  `structure_id` int(10) NOT NULL,
+  `abbreviated_name` varchar(25) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `note` varchar(50) NOT NULL,
+  `createdAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updatedAt` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `structure_details`
+--
+
+INSERT INTO `structure_details` (`id`, `structure_id`, `abbreviated_name`, `description`, `note`, `createdAt`, `updatedAt`) VALUES
+(1, 1, 'ssd', 'moss vale valley - Australia', 'valley moss vale near sutton forest', '2019-02-01 09:33:00.000000', '2019-02-01 09:33:00.000000'),
+(2, 2, 'kangaroo valley', 'kangaroo valley  near moss vale', 'B73 Kangaroo Valley NSW 2577', '2019-02-01 09:54:37.000000', '2019-02-01 09:54:37.000000'),
+(3, 3, 'burwood nsw', 'Meryla street, Berwood NSW, Australia', 'Meryla street', '2019-02-01 09:58:18.000000', '2019-02-01 09:58:18.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_structures`
+--
+
+CREATE TABLE `sub_structures` (
+  `id` int(10) NOT NULL,
+  `structure_id` int(10) NOT NULL,
+  `structure_name` varchar(25) NOT NULL,
+  `structure_type` varchar(25) NOT NULL,
+  `total_space` int(10) NOT NULL,
+  `occupied_space` int(10) NOT NULL,
+  `color` varchar(10) NOT NULL,
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `hidden` enum('false','true') NOT NULL DEFAULT 'false',
+  `low` int(10) NOT NULL,
+  `medium` int(10) NOT NULL,
+  `full` int(10) NOT NULL,
+  `createdAt` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updatedAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sub_structures`
+--
+
+INSERT INTO `sub_structures` (`id`, `structure_id`, `structure_name`, `structure_type`, `total_space`, `occupied_space`, `color`, `status`, `latitude`, `longitude`, `hidden`, `low`, `medium`, `full`, `createdAt`, `updatedAt`) VALUES
+(1, 1, 'Space 5', 'Space', 33, 33, 'green', 'inactive', -33.9517, 151.073, 'false', 2, 2, 4, '2019-02-01 09:49:13.000000', '2019-02-01 09:49:13.000000'),
+(2, 1, 'Space 5', 'roselands drive', 23, 23, 'green', 'active', -33.9365, 151.071, 'false', 2, 2, 4, '2019-02-01 09:50:24.000000', '2019-02-01 09:50:24.000000'),
+(3, 2, 'cooks nose', 'Lot', 21, 23, 'green', 'active', -34.6922, 150.71, 'false', 3, 5, 78, '2019-02-01 11:02:57.000000', '2019-02-01 11:02:57.000000');
 
 --
 -- Indexes for dumped tables
@@ -68,6 +123,20 @@ ALTER TABLE `structures`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `structure_details`
+--
+ALTER TABLE `structure_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `structure_id` (`structure_id`);
+
+--
+-- Indexes for table `sub_structures`
+--
+ALTER TABLE `sub_structures`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `structure_id` (`structure_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -75,7 +144,33 @@ ALTER TABLE `structures`
 -- AUTO_INCREMENT for table `structures`
 --
 ALTER TABLE `structures`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `structure_details`
+--
+ALTER TABLE `structure_details`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `sub_structures`
+--
+ALTER TABLE `sub_structures`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `structure_details`
+--
+ALTER TABLE `structure_details`
+  ADD CONSTRAINT `structure_details_ibfk_1` FOREIGN KEY (`structure_id`) REFERENCES `structures` (`id`);
+
+--
+-- Constraints for table `sub_structures`
+--
+ALTER TABLE `sub_structures`
+  ADD CONSTRAINT `sub_structures_ibfk_1` FOREIGN KEY (`structure_id`) REFERENCES `structures` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
