@@ -26,6 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     structures.hasMany(models.sub_structures, { foreignKey: 'structure_id' });
     models.structures.hasMany(models.structure_details, { foreignKey: 'structure_id' });
   };
-  
+
   return structures;
 };

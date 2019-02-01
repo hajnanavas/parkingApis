@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     structure_id: {
       type: DataTypes.INTEGER,
-      onDelete: "CASCADE",
-      allowNull: false,
-      references: {
-        model: 'structures',
-        key: 'id'
-      }
+      // onDelete: "CASCADE",
+      // allowNull: false,
+      // references: {
+      //   model: 'structures',
+      //   key: 'id'
+      // }
     },
     structure_name: DataTypes.STRING,
     structure_type: DataTypes.STRING,
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     models.sub_structures.belongsTo(models.structures, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: false,
+       // allowNull: false,
         key: 'structure_id'
       }
     });

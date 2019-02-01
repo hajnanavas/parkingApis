@@ -8,13 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     structure_id:  {
-      type: DataTypes.INTEGER,
-      // onDelete: "CASCADE",
-      // allowNull: false,
-      // references: {
-      //   model: 'structures',
-      //   key: 'id'
-      // }
+      type: DataTypes.INTEGER
     },
     abbreviated_name: DataTypes.STRING,
     description: DataTypes.STRING,
@@ -26,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     models.structure_details.belongsTo(models.structures, {
         onDelete: "CASCADE",
         foreignKey: {
-        //  allowNull: false,
           key: 'structure_id'
         }
       });
