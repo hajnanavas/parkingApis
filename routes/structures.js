@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var model = require('../models');
-var structure_details = require('../models/structure_details');
 
 router.get("/getStructures", (req, res) =>
     model.structures.findAll(
@@ -33,11 +32,11 @@ router.post("/addStructure", (req, res) =>
         low: req.body.low,
         medium: req.body.medium,
         full: req.body.full,
-        structure_details: [{
+        structure_details: {
             abbreviated_name: req.body.abbreviatedName,
             description: req.body.description,
             note: req.body.note
-        }]
+        }
     }, {
             include: [model.structure_details]
         }).then((result) => {
