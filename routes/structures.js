@@ -21,7 +21,7 @@ router.post("/addStructure", (req, res) =>
         low: req.body.low,
         medium: req.body.medium,
         full: req.body.full,
-        structure_details: [{
+        structure_details:[ {
             abbreviated_name: req.body.abbreviatedName,
             description: req.body.description,
             note: req.body.note
@@ -29,7 +29,6 @@ router.post("/addStructure", (req, res) =>
     }, {
             include: [model.structure_details]
         }).then((result) => {
-            console.log('result', result)
             res.json(result)
         })
 );

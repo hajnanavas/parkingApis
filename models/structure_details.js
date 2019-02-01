@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
 
   structure_details.associate = function(models) {
     // associations can be defined here
-      structure_details.belongsTo(models.structures, {
+    models.structure_details.belongsTo(models.structures, {
         onDelete: "CASCADE",
         foreignKey: {
         //  allowNull: false,

@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   structures.associate = function (models) {
     // associations can be defined here
     structures.hasMany(models.sub_structures, { foreignKey: 'structure_id' });
-    structures.hasMany(models.structure_details, { foreignKey: 'structure_id' });
+    models.structures.hasMany(models.structure_details, { foreignKey: 'structure_id' });
   };
   
   return structures;
