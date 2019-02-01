@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     structure_id:  {
       type: DataTypes.INTEGER,
-      onDelete: "CASCADE",
-      allowNull: false,
-      references: {
-        model: 'structures',
-        key: 'id'
-      }
+      // onDelete: "CASCADE",
+      // allowNull: false,
+      // references: {
+      //   model: 'structures',
+      //   key: 'id'
+      // }
     },
     abbreviated_name: DataTypes.STRING,
     description: DataTypes.STRING,
@@ -23,10 +23,10 @@ module.exports = (sequelize, DataTypes) => {
 
   structure_details.associate = function(models) {
     // associations can be defined here
-      models.structure_details.belongsTo(models.structures, {
+      structure_details.belongsTo(models.structures, {
         onDelete: "CASCADE",
         foreignKey: {
-          allowNull: false,
+        //  allowNull: false,
           key: 'structure_id'
         }
       });

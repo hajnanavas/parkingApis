@@ -10,12 +10,12 @@ module.exports = {
       },
       structure_id: {
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
-        allowNull: false,
-        references: {
-          model: 'structures',
-          key: 'id'
-        }
+        // onDelete: "CASCADE",
+        // allowNull: false,
+        // references: {
+        //   model: 'structures',
+        //   key: 'id'
+        // }
       },
       abbreviated_name: {
         type: Sequelize.STRING
